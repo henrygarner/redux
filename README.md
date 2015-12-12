@@ -1,6 +1,14 @@
 # Redux
 
-A Clojure library of reducing combinators.
+A Clojure library of reducing function combinators.
+
+## Installation
+
+Add the following dependency to your `project.clj` or `build.boot`:
+
+```clojure
+[redux "0.1.0"]
+```
 
 ## Usage
 
