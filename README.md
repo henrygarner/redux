@@ -23,6 +23,15 @@ Add the following dependency to your `project.clj` or `build.boot`:
 
 ;; => {:a 10, :b [0 1 2 3 4]}
 
+(def rf
+  (facet
+    (fuse {:sum  +
+           :conj conj})
+    [:a :b]))
+
+(transduce identity rf [{:a 1 :b 2} {:a 3 :b 4}])
+
+;; => [{:sum 4, :conj [1 3]} {:sum 6, :conj [2 4]}]
 ```
 
 ## References
