@@ -34,10 +34,9 @@
        (apply juxt)))
 
 (defn fuse [kvs]
-  (let [rfns (vals kvs)]
-    (post-complete (apply juxt rfns)
-                   (fn [acc]
-                     (zipmap (keys kvs) acc)))))
+  (post-complete (apply juxt (vals kvs))
+                 (fn [acc]
+                   (zipmap (keys kvs) acc))))
 
 (defn fuse-matrix [rf kvs]
   (-> (fuse (->> (combinations (keys kvs) 2)
