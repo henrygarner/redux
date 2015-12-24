@@ -1,6 +1,6 @@
 # Redux
 
-A Clojure library of reducing function combinators.
+A Clojure/ClojureScript library of reducing function combinators.
 
 ## Installation
 
