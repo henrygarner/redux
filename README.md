@@ -7,7 +7,7 @@ A Clojure/ClojureScript library of reducing function combinators.
 Add the following dependency to your `project.clj` or `build.boot`:
 
 ```clojure
-[redux "0.1.1"]
+[redux "0.1.2"]
 ```
 
 ## Usage
@@ -40,6 +40,6 @@ Strongly inspired by [Tesser](https://github.com/aphyr/tesser).
 
 ## License
 
-Copyright © 2015 Henry Garner
+Copyright © 2016 Henry Garner
 
 Distributed under the Eclipse Public License version 1.0.
