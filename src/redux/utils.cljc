@@ -14,7 +14,9 @@
        (into m)))
 
 (defn pairs [coll]
-  (for [x coll
-        y coll
-        :when (not= x y)]
-    [x y]))
+  (letfn [(pair [x xs]
+            (if (seq xs)
+              (concat (map #(vector x %) xs)
+                      (pair (first xs) (rest xs)))
+              []))]
+    (pair (first coll) (rest coll))))
