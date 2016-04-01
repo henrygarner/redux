@@ -1,8 +1,18 @@
-(defproject redux "0.1.1"
+(defproject redux "0.1.1-SNAPSHOT"
   :description "A Clojure library of reducing combinators"
   :url "https://github.com/henrygarner/redux"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/math.combinatorics "0.1.1"]]
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.7.0"]
-                                  [org.clojure/clojurescript "1.7.170"]]}})
+  :dependencies []
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.8.0"]
+                                  [org.clojure/clojurescript "1.8.40"]]
+                   :plugins [[lein-cljsbuild "1.1.3"]
+                             [lein-doo "0.1.6"]]}}
+  :cljsbuild
+  {:builds
+   {:test {:source-paths ["src" "test"]
+           :compiler {:output-to "target/main.js"
+                      :main 'redux.test-runner
+                      :optimizations :whitespace}}}}
+  :aliases
+  {"test-cljs" ["doo" "phantom" "test" "once"]})

@@ -1,6 +1,5 @@
 (ns redux.core
-  (:require [clojure.math.combinatorics :refer [combinations]]
-            [redux.utils :refer [project complete-triangular-matrix]])
+  (:require [redux.utils :refer [project complete-triangular-matrix pairs]])
   (:refer-clojure :exclude [juxt]))
 
 (defn pre-step [rf f]
@@ -39,7 +38,7 @@
                    (zipmap (keys kvs) acc))))
 
 (defn fuse-matrix [rf kvs]
-  (-> (fuse (->> (combinations (keys kvs) 2)
+  (-> (fuse (->> (pairs (keys kvs))
                  (map (fn [[k1 k2]]
                         [[k1 k2] (rf #(get % k1) #(get % k2))]))
                  (into {})))

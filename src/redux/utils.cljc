@@ -12,3 +12,9 @@
   (->> (map (fn [[[x y] v]]
               [[y x] v]) m)
        (into m)))
+
+(defn pairs [coll]
+  (for [x coll
+        y coll
+        :when (not= x y)]
+    [x y]))
