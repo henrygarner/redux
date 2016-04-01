@@ -1,4 +1,4 @@
-(defproject redux "0.1.1-SNAPSHOT"
+(defproject redux "0.1.2"
   :description "A Clojure library of reducing combinators"
   :url "https://github.com/henrygarner/redux"
   :license {:name "Eclipse Public License"
