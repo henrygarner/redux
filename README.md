@@ -7,7 +7,7 @@ A Clojure/ClojureScript library of reducing function combinators.
 Add the following dependency to your `project.clj` or `build.boot`:
 
 ```clojure
-[redux "0.1.3"]
+[redux "0.1.4"]
 ```
 
 ## Usage
