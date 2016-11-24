@@ -14,6 +14,17 @@
     ([acc]   (f (rf acc)))
     ([acc x] (rf acc x))))
 
+(defn with-xform [rf xform]
+  (let [rfv (volatile! nil)]
+    (fn
+      ([]
+       (vreset! rfv (xform rf))
+       (@rfv))
+      ([acc]
+       (@rfv acc))
+      ([acc x]
+       (@rfv acc x)))))
+
 (defn juxt [& rfns]
   (fn
     ([] (mapv (fn [f] (f)) rfns))

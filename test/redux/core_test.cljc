@@ -12,6 +12,17 @@
   (is (= (transduce identity (r/post-complete + str) [1 2])
          "3")))
 
+(deftest with-xform-test
+  (is (= (transduce identity (r/with-xform + (filter odd?)) [1 2 3])
+         4)))
+
+(deftest with-stateful-xform-test
+  (let [rf (r/with-xform conj (take 2))]
+    (is (= (transduce identity rf [1 2 3])
+           [1 2]))
+    (is (= (transduce identity rf [1 2 3])
+           [1 2]))))
+
 (deftest juxt-test
   (is (= (transduce identity (r/juxt + conj) [1 2])
          [3 [1 2]])))
