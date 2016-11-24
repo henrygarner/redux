@@ -13,7 +13,7 @@ Add the following dependency to your `project.clj` or `build.boot`:
 ## Usage
 
 ```clojure
-(require '[redux.core :refer [facet fuse]])
+(require '[redux.core :refer [facet fuse with-xform]])
 
 (transduce identity (facet + [dec inc]) (range 5))
 
@@ -36,7 +36,7 @@ Add the following dependency to your `project.clj` or `build.boot`:
 
 ;; Stateful transducers are reset on reducing function initialization
 
-(let [rf (r/with-xform conj (take 2))]
+(let [rf (with-xform conj (take 2))]
 
   ;; Apply the stateful reducing function once...
   (transduce identity rf [1 2 3])
