@@ -55,3 +55,17 @@
                  (into {})))
       (pre-step (project kvs))
       (post-complete complete-triangular-matrix)))
+
+(defn col-wise [& rfs]
+  (fn
+    ([] (mapv (fn [rf] (rf)) rfs))
+    ([accs] (mapv (fn [rf acc] (rf (unreduced acc))) rfs accs))
+    ([accs row]
+     (let [all-reduced? (volatile! true)
+           results (mapv (fn [rf acc x]
+                           (if-not (reduced? acc)
+                             (do (vreset! all-reduced? false)
+                                 (rf acc x))
+                             acc))
+                         rfs accs row)]
+       (if @all-reduced? (reduced results) results)))))

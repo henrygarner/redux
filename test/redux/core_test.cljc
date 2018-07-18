@@ -44,3 +44,6 @@
     (is (= (transduce identity (r/fuse-matrix rf {:a inc :b identity :c dec}) (range 10))
            {[:a :b] 100, [:a :c] 90, [:b :c] 80,
             [:b :a] 100, [:c :a] 90, [:c :b] 80}))))
+
+(deftest col-wise-test
+  (is (= [6 [:a :b :c]] (transduce identity (r/col-wise + conj) [[1 :a] [2 :b] [3 :c]]))))
